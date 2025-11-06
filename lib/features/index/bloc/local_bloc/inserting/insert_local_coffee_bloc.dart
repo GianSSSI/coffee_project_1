@@ -3,7 +3,6 @@ import 'package:coffee/features/index/model/coffee/local_coffee/local_coffee_mod
 import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
 import 'package:coffee/features/index/repositories/local_repository/local_coffee_remote_repository.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 part 'insert_local_coffee_event.dart';
 part 'insert_local_coffee_state.dart';
@@ -27,6 +26,7 @@ class InsertLocalCoffeeBloc
 
       response.fold(
         (e) {
+          print("INSERT ERR: ${e.message}");
           emit(
             state.copyWith(
               errorMessage: e.message,

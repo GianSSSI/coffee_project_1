@@ -38,4 +38,27 @@ class LocalCoffee {
       label: label,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'coffeeId': coffeeId,
+      'title': title,
+      'description': description,
+      'image': image,
+
+      'ingredients': ingredients.join(','),
+      'label': label,
+    };
+  }
+
+  factory LocalCoffee.fromMap(Map<String, dynamic> map) {
+    return LocalCoffee(
+      coffeeId: map['coffeeId'] as int,
+      title: map['title'] as String,
+      description: map['description'] as String,
+      image: map['image'] as String,
+      ingredients: (map['ingredients'] as String).split(','),
+      label: map['label'] as String,
+    );
+  }
 }

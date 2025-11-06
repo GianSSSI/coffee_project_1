@@ -12,7 +12,11 @@ class CoffeeDao {
   Future<int> insertCoffee(LocalCoffee coffee) async {
     try {
       final db = await _appDatabase.database;
-      return await db.insert(AppConfig.tbName, coffee.toJson());
+      return await db.insert(
+        AppConfig.tbName,
+        coffee.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
     } on DatabaseException catch (e) {
       throw SqlException(message: 'Database error: ${e.toString()}');
     } catch (e) {
@@ -23,7 +27,7 @@ class CoffeeDao {
   Future<List<LocalCoffee>> getAllCoffee() async {
     try {
       final db = await _appDatabase.database;
-      final result = await db.query('users');
+      final result = await db.query(AppConfig.tbName);
       return result.map((e) => LocalCoffee.fromJson(e)).toList();
     } on DatabaseException catch (e) {
       throw SqlException(message: 'Database error: ${e.toString()}');

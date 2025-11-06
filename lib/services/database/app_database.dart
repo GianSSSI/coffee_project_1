@@ -30,12 +30,14 @@ class AppDatabase {
 
   Future<void> _onCreate(Database db, int version) async {
     await db.execute("""
-        CREATE TABLE  ${AppConfig.tbName} (
-        coffeeId INTEGER PRIMARY KEY
-        title TEXT,
-        description TEXT,
-        label TEXT,
-        )
-        """);
+  CREATE TABLE ${AppConfig.tbName} (
+    coffeeId INTEGER PRIMARY KEY,
+    title TEXT,
+    description TEXT,
+    image TEXT,
+    ingredients TEXT,
+    label TEXT
+  )
+""");
   }
 }

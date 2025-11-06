@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coffee/core/injection/dependency_injection.dart';
+import 'package:coffee/features/index/bloc/local_bloc/inserting/insert_local_coffee_bloc.dart';
 import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
 import 'package:coffee/features/index/ui/widgets/bottom_drawer.dart';
 import 'package:coffee/helpers/validation/cubit/form_validation_cubit.dart';
@@ -15,6 +16,7 @@ class CoffeeDetailsScreen extends StatefulWidget {
 }
 
 class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
+  final TextEditingController _labelController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final coffee = widget.coffee;
@@ -38,6 +40,7 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
 
                         const SizedBox(height: 10),
                         TextField(
+                          controller: _labelController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -57,7 +60,19 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
                         ),
                         const SizedBox(height: 15),
 
-                        ElevatedButton(onPressed: () {}, child: Text("Save")),
+                        ElevatedButton(
+                          onPressed: state.isValid
+                              ? () {
+                                  context.read<InsertLocalCoffeeBloc>().add(
+                                    InsertCoffee(
+                                      remoteCoffee: coffee,
+                                      label: _labelController.text,
+                                    ),
+                                  );
+                                }
+                              : null,
+                          child: Text("Save"),
+                        ),
                       ],
                     );
                   },
