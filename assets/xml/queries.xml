@@ -1,0 +1,18 @@
+<queries>
+  <query id="insert_coffee">
+    INSERT INTO coffee (
+      coffeeId,
+      title,
+      description,
+      image,
+      ingredients,
+      label
+    ) VALUES (?, ?, ?, ?, ?, ?);
+  </query>
+
+  <query id="get_all_coffee">
+    SELECT * FROM coffee;
+  </query>
+
+
+</queries>

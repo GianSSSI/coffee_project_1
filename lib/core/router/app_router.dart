@@ -48,7 +48,8 @@ final router = GoRouter(
               path: AppRoutes.favorites.path,
               builder: (context, state) => BlocProvider(
                 create: (context) =>
-                    sl<FetchLocalCoffeeBloc>()..add(FetchLocalCoffee()),
+                    // sl<FetchLocalCoffeeBloc>()..add(FetchLocalCoffee()), //uses sqflite methods to insert
+                    sl<FetchLocalCoffeeBloc>()..add(FetchLocalCoffeeViaXml()),
                 child: const CoffeeFavoritesScreen(),
               ),
             ),

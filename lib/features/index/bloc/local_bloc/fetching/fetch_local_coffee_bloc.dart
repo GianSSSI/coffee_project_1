@@ -35,5 +35,29 @@ class FetchLocalCoffeeBloc
         },
       );
     });
+
+    on<FetchLocalCoffeeViaXml>((event, emit) async {
+      emit(state.copyWith(status: FetchCoffeeStatus.loading));
+
+      final response = await _localCoffeeRepository.getAllHotCoffeeViaXml();
+
+      response.fold(
+        (exception) {
+          print("ERR FETCH: ${exception.message}");
+          emit(
+            state.copyWith(
+              status: FetchCoffeeStatus.failed,
+              errorMessage: exception.message,
+            ),
+          );
+        },
+        (list) {
+          print("COFFEE LIST: ${list}");
+          emit(
+            state.copyWith(status: FetchCoffeeStatus.success, coffeeList: list),
+          );
+        },
+      );
+    });
   }
 }

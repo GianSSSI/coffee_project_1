@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:coffee/features/index/model/coffee/local_coffee/local_coffee_model.dart';
 import 'package:coffee/features/index/model/exceptions/sql_exception.dart';
 import 'package:coffee/helpers/configuration/app_config.dart';
+import 'package:coffee/helpers/xml_query/query_loader.dart';
 import 'package:coffee/services/database/app_database.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -8,6 +11,46 @@ class CoffeeDao {
   final AppDatabase _appDatabase;
 
   CoffeeDao({required AppDatabase appDatabase}) : _appDatabase = appDatabase;
+
+  Future<int> insertCoffeeViaXml(LocalCoffee coffee) async {
+    try {
+      await QueryLoader.loadQueries();
+      final db = await _appDatabase.database;
+      final sql = QueryLoader.get('insert_coffee');
+
+      final coffeeId = await db.rawInsert(sql, [
+        coffee.coffeeId,
+        coffee.title,
+        coffee.description,
+        coffee.image,
+        jsonEncode(coffee.ingredients),
+        coffee.label,
+      ]);
+
+      return coffeeId;
+    } on DatabaseException catch (e) {
+      throw SqlException(message: 'Database error: ${e.toString()}');
+    } catch (e) {
+      throw SqlException(message: 'Unexpected error: ${e.toString()}');
+    }
+  }
+
+  Future<List<LocalCoffee>> getAllCoffeeViaXml() async {
+    try {
+      await QueryLoader.loadQueries();
+      final db = await _appDatabase.database;
+      final sql = QueryLoader.get('get_all_coffee');
+
+      final result = await db.rawQuery(sql);
+      return result.map((row) {
+        return LocalCoffee.fromJson(row);
+      }).toList();
+    } on DatabaseException catch (e) {
+      throw SqlException(message: 'Database error: ${e.toString()}');
+    } catch (e) {
+      throw SqlException(message: 'Unexpected error: ${e.toString()}');
+    }
+  }
 
   Future<int> insertCoffee(LocalCoffee coffee) async {
     try {

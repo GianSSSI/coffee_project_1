@@ -25,8 +25,6 @@ class LocalCoffee {
     required this.label,
   });
 
-  // -------------------- FACTORIES --------------------
-
   factory LocalCoffee.fromJson(Map<String, dynamic> json) =>
       _$LocalCoffeeFromJson(json);
 
@@ -43,23 +41,18 @@ class LocalCoffee {
     );
   }
 
-  // -------------------- CUSTOM CONVERTERS --------------------
-
   static List<String> _ingredientsFromJson(dynamic value) {
     if (value == null) return [];
 
     if (value is List) {
-      // Already a list (normal case)
       return value.map((e) => e.toString()).toList();
     } else if (value is String) {
-      // Stored as a JSON string (from SQLite)
       try {
         final decoded = jsonDecode(value);
         if (decoded is List) {
           return decoded.map((e) => e.toString()).toList();
         }
       } catch (_) {
-        // Fallback if it’s comma-separated
         return value.split(',').map((e) => e.trim()).toList();
       }
     }

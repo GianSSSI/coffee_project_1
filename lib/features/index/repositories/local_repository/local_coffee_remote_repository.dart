@@ -7,4 +7,10 @@ abstract interface class LocalCoffeeRepository {
   Future<Either<SqlException, int>> intsertCoffee({
     required LocalCoffee coffee,
   });
+
+  //xml
+  Future<Either<SqlException, List<LocalCoffee>>> getAllHotCoffeeViaXml();
+  Future<Either<SqlException, int>> intsertCoffeeViaXml({
+    required LocalCoffee coffee,
+  });
 }

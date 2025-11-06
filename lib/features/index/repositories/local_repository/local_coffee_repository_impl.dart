@@ -31,4 +31,27 @@ class LocalCoffeeRepositoryImpl implements LocalCoffeeRepository {
       return left(SqlException(message: e.message));
     }
   }
+
+  @override
+  Future<Either<SqlException, List<LocalCoffee>>>
+  getAllHotCoffeeViaXml() async {
+    try {
+      final coffeeList = await _coffeeDao.getAllCoffeeViaXml();
+      return right(coffeeList);
+    } on SqlException catch (e) {
+      return left(SqlException(message: e.message));
+    }
+  }
+
+  @override
+  Future<Either<SqlException, int>> intsertCoffeeViaXml({
+    required LocalCoffee coffee,
+  }) async {
+    try {
+      final coffeeId = await _coffeeDao.insertCoffeeViaXml(coffee);
+      return right(coffeeId);
+    } on SqlException catch (e) {
+      return left(SqlException(message: e.message));
+    }
+  }
 }

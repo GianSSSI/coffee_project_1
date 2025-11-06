@@ -13,3 +13,10 @@ final class InsertCoffee extends InsertLocalCoffeeEvent {
 
   const InsertCoffee({required this.remoteCoffee, required this.label});
 }
+
+final class InsertCoffeeViaXml extends InsertLocalCoffeeEvent {
+  final RemoteCoffee remoteCoffee; // conveert in handler
+  final String label;
+
+  const InsertCoffeeViaXml({required this.remoteCoffee, required this.label});
+}

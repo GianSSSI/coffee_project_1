@@ -8,3 +8,5 @@ sealed class FetchLocalCoffeeEvent extends Equatable {
 }
 
 final class FetchLocalCoffee extends FetchLocalCoffeeEvent {}
+
+final class FetchLocalCoffeeViaXml extends FetchLocalCoffeeEvent {}

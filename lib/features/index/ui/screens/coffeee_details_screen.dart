@@ -70,8 +70,15 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
                         ElevatedButton(
                           onPressed: state.isValid
                               ? () {
+                                  // context.read<InsertLocalCoffeeBloc>().add(
+                                  //   InsertCoffee(
+                                  //     remoteCoffee: coffee,
+                                  //     label: _labelController.text,
+                                  //   ),
+                                  // );
+
                                   context.read<InsertLocalCoffeeBloc>().add(
-                                    InsertCoffee(
+                                    InsertCoffeeViaXml(
                                       remoteCoffee: coffee,
                                       label: _labelController.text,
                                     ),

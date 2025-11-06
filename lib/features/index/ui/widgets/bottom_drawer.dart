@@ -22,7 +22,8 @@ class BottomDrawer extends StatelessWidget {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text("Successfully Addess")));
-            context.read<FetchLocalCoffeeBloc>().add(FetchLocalCoffee());
+            // context.read<FetchLocalCoffeeBloc>().add(FetchLocalCoffee()); //uses sqflite method to insert
+            context.read<FetchLocalCoffeeBloc>().add(FetchLocalCoffeeViaXml());
             Navigator.pop(context);
           }
 

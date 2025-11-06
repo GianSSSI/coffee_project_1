@@ -41,5 +41,34 @@ class InsertLocalCoffeeBloc
         },
       );
     });
+
+    on<InsertCoffeeViaXml>((event, emit) async {
+      emit(state.copyWith(status: InsertCoffeeStatus.loading));
+
+      final localCoffee = LocalCoffee.fromRemoteCoffee(
+        event.remoteCoffee,
+        label: event.label,
+      );
+      final response = await _localCoffeeRepository.intsertCoffeeViaXml(
+        coffee: localCoffee,
+      );
+
+      response.fold(
+        (e) {
+          print("INSERT ERR: ${e.message}");
+          emit(
+            state.copyWith(
+              errorMessage: e.message,
+              status: InsertCoffeeStatus.failed,
+            ),
+          );
+        },
+        (id) {
+          emit(
+            state.copyWith(status: InsertCoffeeStatus.success, coffeeId: id),
+          );
+        },
+      );
+    });
   }
 }
