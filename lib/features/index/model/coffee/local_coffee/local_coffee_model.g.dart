@@ -11,9 +11,7 @@ LocalCoffee _$LocalCoffeeFromJson(Map<String, dynamic> json) => LocalCoffee(
   title: json['title'] as String,
   description: json['description'] as String,
   image: json['image'] as String,
-  ingredients: (json['ingredients'] as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
+  ingredients: LocalCoffee._ingredientsFromJson(json['ingredients']),
   label: json['label'] as String,
 );
 
@@ -23,6 +21,6 @@ Map<String, dynamic> _$LocalCoffeeToJson(LocalCoffee instance) =>
       'title': instance.title,
       'description': instance.description,
       'image': instance.image,
-      'ingredients': instance.ingredients,
+      'ingredients': LocalCoffee._ingredientsToJson(instance.ingredients),
       'label': instance.label,
     };

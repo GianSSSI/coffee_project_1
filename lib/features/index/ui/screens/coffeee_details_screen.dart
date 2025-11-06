@@ -6,6 +6,7 @@ import 'package:coffee/features/index/ui/widgets/bottom_drawer.dart';
 import 'package:coffee/helpers/validation/cubit/form_validation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CoffeeDetailsScreen extends StatefulWidget {
   final RemoteCoffee coffee;
@@ -17,6 +18,12 @@ class CoffeeDetailsScreen extends StatefulWidget {
 
 class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
   final TextEditingController _labelController = TextEditingController();
+
+  bool isValidUrl(String url) {
+    final uri = Uri.tryParse(url);
+    return uri != null && uri.hasAbsolutePath && uri.host.isNotEmpty;
+  }
+
   @override
   Widget build(BuildContext context) {
     final coffee = widget.coffee;
@@ -96,12 +103,19 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
             ),
             child: Hero(
               tag: coffee.id,
-              child: CachedNetworkImage(
-                imageUrl: coffee.image,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: 200,
-              ),
+              child: isValidUrl(coffee.image)
+                  ? CachedNetworkImage(
+                      imageUrl: coffee.image,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: 200,
+                    )
+                  : SvgPicture.asset(
+                      'assets/svg/coffee_mug.svg',
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: 200,
+                    ),
             ),
           ),
 

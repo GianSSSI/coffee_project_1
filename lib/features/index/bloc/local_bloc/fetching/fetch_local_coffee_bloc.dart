@@ -18,12 +18,15 @@ class FetchLocalCoffeeBloc
       final response = await _localCoffeeRepository.getAllHotCoffee();
 
       response.fold(
-        (exception) => emit(
-          state.copyWith(
-            status: FetchCoffeeStatus.failed,
-            errorMessage: exception.message,
-          ),
-        ),
+        (exception) {
+          print("ERR FETCH: ${exception.message}");
+          emit(
+            state.copyWith(
+              status: FetchCoffeeStatus.failed,
+              errorMessage: exception.message,
+            ),
+          );
+        },
         (list) {
           print("COFFEE LIST: ${list}");
           emit(

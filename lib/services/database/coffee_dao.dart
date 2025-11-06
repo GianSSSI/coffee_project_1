@@ -14,7 +14,7 @@ class CoffeeDao {
       final db = await _appDatabase.database;
       return await db.insert(
         AppConfig.tbName,
-        coffee.toMap(),
+        coffee.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } on DatabaseException catch (e) {

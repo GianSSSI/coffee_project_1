@@ -1,6 +1,7 @@
 import 'package:coffee/core/injection/dependency_injection.dart';
 import 'package:coffee/core/router/app_routes.dart';
 import 'package:coffee/core/widgets/main_shell.dart';
+import 'package:coffee/features/index/bloc/local_bloc/fetching/fetch_local_coffee_bloc.dart';
 import 'package:coffee/features/index/bloc/remote_bloc/coffee_bloc.dart';
 import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
 import 'package:coffee/features/index/ui/screens/coffee_favorites_screen.dart';
@@ -46,7 +47,8 @@ final router = GoRouter(
               name: AppRoutes.favorites.name,
               path: AppRoutes.favorites.path,
               builder: (context, state) => BlocProvider(
-                create: (context) => sl<CoffeeBloc>(),
+                create: (context) =>
+                    sl<FetchLocalCoffeeBloc>()..add(FetchLocalCoffee()),
                 child: const CoffeeFavoritesScreen(),
               ),
             ),

@@ -19,6 +19,7 @@ class AppDatabase {
 
   Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
+    await deleteDatabase(dbPath);
     final path = join(dbPath, filePath);
 
     return await openDatabase(

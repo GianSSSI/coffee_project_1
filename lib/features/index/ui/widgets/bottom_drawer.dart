@@ -1,4 +1,5 @@
 import 'package:coffee/core/injection/dependency_injection.dart';
+import 'package:coffee/features/index/bloc/local_bloc/fetching/fetch_local_coffee_bloc.dart';
 import 'package:coffee/features/index/bloc/local_bloc/inserting/insert_local_coffee_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,7 @@ class BottomDrawer extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => sl<InsertLocalCoffeeBloc>()),
+        // BlocProvider(create: (context) => sl<FetchLocalCoffeeBloc>()),
       ],
       child: BlocListener<InsertLocalCoffeeBloc, InsertLocalCoffeeState>(
         listener: (context, state) {
@@ -20,6 +22,7 @@ class BottomDrawer extends StatelessWidget {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text("Successfully Addess")));
+            context.read<FetchLocalCoffeeBloc>().add(FetchLocalCoffee());
             Navigator.pop(context);
           }
 
