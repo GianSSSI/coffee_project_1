@@ -1,5 +1,5 @@
 import 'package:coffee/core/router/app_routes.dart';
-import 'package:coffee/features/index/bloc/coffee_bloc.dart';
+import 'package:coffee/features/index/bloc/remote_bloc/coffee_bloc.dart';
 import 'package:coffee/features/index/ui/widgets/coffee_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

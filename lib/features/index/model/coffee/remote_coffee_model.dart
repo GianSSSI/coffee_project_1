@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'coffee_model.g.dart';
+part 'remote_coffee_model.g.dart';
 
 @JsonSerializable()
-class Coffee {
+class RemoteCoffee {
   final String title;
   final String description;
   final String image;
@@ -14,7 +14,7 @@ class Coffee {
   @JsonKey(fromJson: _ingredientsFromJson, toJson: _ingredientsToJson)
   final List<String> ingredients;
 
-  Coffee({
+  RemoteCoffee({
     required this.title,
     required this.description,
     required this.image,
@@ -22,8 +22,9 @@ class Coffee {
     required this.ingredients,
   });
 
-  factory Coffee.fromJson(Map<String, dynamic> json) => _$CoffeeFromJson(json);
-  Map<String, dynamic> toJson() => _$CoffeeToJson(this);
+  factory RemoteCoffee.fromJson(Map<String, dynamic> json) =>
+      _$RemoteCoffeeFromJson(json);
+  Map<String, dynamic> toJson() => _$RemoteCoffeeToJson(this);
 
   static String _idFromJson(dynamic id) => id.toString();
   static dynamic _idToJson(String id) => id;

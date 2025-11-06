@@ -3,7 +3,7 @@ part of 'coffee_bloc.dart';
 enum CoffeeStatus { initial, loading, success, failure }
 
 class CoffeeState extends Equatable {
-  final List<Coffee> coffeeList;
+  final List<RemoteCoffee> coffeeList;
   final String? errorMessage;
   final CoffeeStatus status;
 
@@ -14,7 +14,7 @@ class CoffeeState extends Equatable {
   });
 
   CoffeeState copyWith({
-    List<Coffee>? coffeeList,
+    List<RemoteCoffee>? coffeeList,
     String? errorMessage,
     CoffeeStatus? status,
   }) {

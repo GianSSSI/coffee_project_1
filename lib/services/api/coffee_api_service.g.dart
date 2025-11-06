@@ -22,12 +22,12 @@ class _CoffeeApiService implements CoffeeApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Coffee>> getHotCoffees() async {
+  Future<List<RemoteCoffee>> getHotCoffees() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Coffee>>(
+    final _options = _setStreamType<List<RemoteCoffee>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -38,10 +38,10 @@ class _CoffeeApiService implements CoffeeApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Coffee> _value;
+    late List<RemoteCoffee> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Coffee.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => RemoteCoffee.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

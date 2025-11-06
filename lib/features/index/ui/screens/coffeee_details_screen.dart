@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:coffee/core/injection/dependency_injection.dart';
-import 'package:coffee/features/index/model/coffee/coffee_model.dart';
+import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
 import 'package:coffee/features/index/ui/widgets/bottom_drawer.dart';
 import 'package:coffee/helpers/validation/cubit/form_validation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CoffeeDetailsScreen extends StatefulWidget {
-  final Coffee coffee;
+  final RemoteCoffee coffee;
   const CoffeeDetailsScreen({required this.coffee, super.key});
 
   @override

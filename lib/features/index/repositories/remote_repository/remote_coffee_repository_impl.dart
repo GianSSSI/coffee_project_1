@@ -1,17 +1,17 @@
-import 'package:coffee/features/index/model/coffee/coffee_model.dart';
+import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
 import 'package:coffee/features/index/model/exceptions/api_exception.dart';
-import 'package:coffee/features/index/repositories/coffee_repository.dart';
+import 'package:coffee/features/index/repositories/remote_repository/remote_coffee_repository.dart';
 import 'package:coffee/services/api/coffee_api_service.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
-class CoffeeRepositoryImpl implements CoffeeRepository {
+class RemoteCoffeeRepositoryImpl implements RemoteCoffeeRepository {
   final CoffeeApiService _coffeeApiService;
 
-  CoffeeRepositoryImpl({required CoffeeApiService coffeeApiService})
+  RemoteCoffeeRepositoryImpl({required CoffeeApiService coffeeApiService})
     : _coffeeApiService = coffeeApiService;
   @override
-  Future<Either<ApiException, List<Coffee>>> getHotCoffees() async {
+  Future<Either<ApiException, List<RemoteCoffee>>> getHotCoffees() async {
     print("CALLED getHotCoffees");
     try {
       final coffeeList = await _coffeeApiService.getHotCoffees();

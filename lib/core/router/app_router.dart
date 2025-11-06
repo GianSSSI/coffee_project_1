@@ -1,8 +1,8 @@
 import 'package:coffee/core/injection/dependency_injection.dart';
 import 'package:coffee/core/router/app_routes.dart';
 import 'package:coffee/core/widgets/main_shell.dart';
-import 'package:coffee/features/index/bloc/coffee_bloc.dart';
-import 'package:coffee/features/index/model/coffee/coffee_model.dart';
+import 'package:coffee/features/index/bloc/remote_bloc/coffee_bloc.dart';
+import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
 import 'package:coffee/features/index/ui/screens/coffee_favorites_screen.dart';
 import 'package:coffee/features/index/ui/screens/coffee_home_screen.dart';
 import 'package:coffee/features/index/ui/screens/coffeee_details_screen.dart';
@@ -31,7 +31,7 @@ final router = GoRouter(
                   name: AppRoutes.details.name,
                   path: AppRoutes.details.path,
                   builder: (context, state) {
-                    final coffee = state.extra as Coffee;
+                    final coffee = state.extra as RemoteCoffee;
                     return CoffeeDetailsScreen(coffee: coffee);
                   },
                 ),

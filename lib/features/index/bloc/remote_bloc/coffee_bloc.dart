@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:coffee/features/index/model/coffee/coffee_model.dart';
-import 'package:coffee/features/index/repositories/coffee_repository.dart';
+import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
+import 'package:coffee/features/index/repositories/remote_repository/remote_coffee_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +8,9 @@ part 'coffee_event.dart';
 part 'coffee_state.dart';
 
 class CoffeeBloc extends Bloc<CoffeeEvent, CoffeeState> {
-  final CoffeeRepository _coffeeRepository;
+  final RemoteCoffeeRepository _coffeeRepository;
 
-  CoffeeBloc({required CoffeeRepository coffeeRepository})
+  CoffeeBloc({required RemoteCoffeeRepository coffeeRepository})
     : _coffeeRepository = coffeeRepository,
       super(const CoffeeState()) {
     on<FetchHotCoffee>((event, emit) async {

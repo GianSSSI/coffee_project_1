@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:coffee/features/index/model/coffee/coffee_model.dart';
+import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeCard extends StatelessWidget {
-  final Coffee coffee;
+  final RemoteCoffee coffee;
   const CoffeeCard({required this.coffee, super.key});
 
   @override
