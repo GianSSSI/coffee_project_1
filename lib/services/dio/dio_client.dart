@@ -1,5 +1,5 @@
-import 'package:coffee/features/index/model/exceptions/api_exception.dart';
-import 'package:coffee/helpers/configuration/app_config.dart';
+import 'package:coffee/features/coffee/model/exceptions/api_exception.dart';
+import 'package:coffee/core/configuration/app_config.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 

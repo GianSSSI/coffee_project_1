@@ -1,10 +1,10 @@
-import 'package:coffee/features/index/bloc/local_bloc/fetching/fetch_local_coffee_bloc.dart';
-import 'package:coffee/features/index/bloc/local_bloc/inserting/insert_local_coffee_bloc.dart';
-import 'package:coffee/features/index/bloc/remote_bloc/coffee_bloc.dart';
-import 'package:coffee/features/index/repositories/local_repository/local_coffee_remote_repository.dart';
-import 'package:coffee/features/index/repositories/local_repository/local_coffee_repository_impl.dart';
-import 'package:coffee/features/index/repositories/remote_repository/remote_coffee_repository.dart';
-import 'package:coffee/features/index/repositories/remote_repository/remote_coffee_repository_impl.dart';
+import 'package:coffee/features/coffee/bloc/local_bloc/fetching/fetch_local_coffee_bloc.dart';
+import 'package:coffee/features/coffee/bloc/local_bloc/inserting/insert_local_coffee_bloc.dart';
+import 'package:coffee/features/coffee/bloc/remote_bloc/coffee_bloc.dart';
+import 'package:coffee/features/coffee/repositories/local_repository/local_coffee_remote_repository.dart';
+import 'package:coffee/features/coffee/repositories/local_repository/local_coffee_repository_impl.dart';
+import 'package:coffee/features/coffee/repositories/remote_repository/remote_coffee_repository.dart';
+import 'package:coffee/features/coffee/repositories/remote_repository/remote_coffee_repository_impl.dart';
 import 'package:coffee/helpers/validation/cubit/form_validation_cubit.dart';
 import 'package:coffee/services/api/coffee_api_service.dart';
 import 'package:coffee/services/database/app_database.dart';

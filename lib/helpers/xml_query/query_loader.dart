@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:xml/xml.dart';
 
-class QueryLoader {
+class XmlQueryLoader {
   static final Map<String, String> _queries = {};
 
   static Future<void> loadQueries() async {

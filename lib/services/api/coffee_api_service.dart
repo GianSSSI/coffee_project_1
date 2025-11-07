@@ -1,5 +1,5 @@
-import 'package:coffee/features/index/model/coffee/remote_coffee_model.dart';
-import 'package:coffee/helpers/configuration/app_config.dart';
+import 'package:coffee/features/coffee/model/coffee/remote_coffee/remote_coffee_model.dart';
+import 'package:coffee/core/configuration/app_config.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 

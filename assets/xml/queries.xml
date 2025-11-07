@@ -14,5 +14,8 @@
     SELECT * FROM coffee;
   </query>
 
+<query id="get_coffee_by_id">
+  SELECT * FROM coffee WHERE coffeeId = ?;
+</query>
 
 </queries>

@@ -1,0 +1,30 @@
+import 'package:coffee/features/coffee/model/coffee/remote_coffee/remote_coffee_model.dart';
+import 'package:coffee/features/coffee/model/exceptions/api_exception.dart';
+import 'package:coffee/features/coffee/repositories/remote_repository/remote_coffee_repository.dart';
+import 'package:coffee/services/api/coffee_api_service.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
+
+class RemoteCoffeeRepositoryImpl implements RemoteCoffeeRepository {
+  final CoffeeApiService _coffeeApiService;
+
+  RemoteCoffeeRepositoryImpl({required CoffeeApiService coffeeApiService})
+    : _coffeeApiService = coffeeApiService;
+  @override
+  Future<Either<ApiException, List<RemoteCoffee>>> getHotCoffees() async {
+    debugPrint("CALLED getHotCoffees");
+    try {
+      final coffeeList = await _coffeeApiService.getHotCoffees();
+      debugPrint("COFFEELIST: $coffeeList");
+      return right(coffeeList);
+    } on DioException catch (e) {
+      final error = e.error;
+      if (error is ApiException) {
+        return left(error);
+      } else {
+        return left(ApiException("Unexpected error: ${e.message}"));
+      }
+    }
+  }
+}

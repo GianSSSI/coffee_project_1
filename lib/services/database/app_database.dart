@@ -1,4 +1,4 @@
-import 'package:coffee/helpers/configuration/app_config.dart';
+import 'package:coffee/core/configuration/app_config.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -21,7 +21,7 @@ class AppDatabase {
     final dbPath = await getDatabasesPath();
 
     final path = join(dbPath, filePath);
-    await deleteDatabase(path);
+    // await deleteDatabase(path);
     return await openDatabase(
       path,
       version: AppConfig.dbVersion,
