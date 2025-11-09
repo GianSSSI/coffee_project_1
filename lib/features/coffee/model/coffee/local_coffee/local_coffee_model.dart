@@ -29,6 +29,7 @@ class LocalCoffee {
       _$LocalCoffeeFromJson(json);
 
   Map<String, dynamic> toJson() => _$LocalCoffeeToJson(this);
+
   static List<String> _ingredientsFromJson(dynamic value) {
     if (value == null) return [];
 

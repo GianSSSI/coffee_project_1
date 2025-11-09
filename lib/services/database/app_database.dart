@@ -1,4 +1,5 @@
 import 'package:coffee/core/configuration/app_config.dart';
+import 'package:coffee/helpers/xml_query/query_loader.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -21,7 +22,7 @@ class AppDatabase {
     final dbPath = await getDatabasesPath();
 
     final path = join(dbPath, filePath);
-    // await deleteDatabase(path);
+    await deleteDatabase(path);
     return await openDatabase(
       path,
       version: AppConfig.dbVersion,
@@ -30,15 +31,8 @@ class AppDatabase {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    await db.execute("""
-  CREATE TABLE ${AppConfig.tbName} (
-    coffeeId INTEGER PRIMARY KEY,
-    title TEXT,
-    description TEXT,
-    image TEXT,
-    ingredients TEXT,
-    label TEXT
-  )
-""");
+    await XmlQueryLoader.loadQueries();
+    final createTbQuery = XmlQueryLoader.get("create_coffee_table");
+    await db.execute(createTbQuery);
   }
 }

@@ -18,4 +18,15 @@
   SELECT * FROM coffee WHERE coffeeId = ?;
 </query>
 
+<query id ="create_coffee_table">
+    CREATE TABLE coffee (
+    coffeeId INTEGER PRIMARY KEY,
+    title TEXT,
+    description TEXT,
+    image TEXT,
+    ingredients TEXT,
+    label TEXT
+  )
+</query>
+
 </queries>
