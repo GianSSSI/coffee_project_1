@@ -29,18 +29,6 @@ class LocalCoffee {
       _$LocalCoffeeFromJson(json);
 
   Map<String, dynamic> toJson() => _$LocalCoffeeToJson(this);
-
-  factory LocalCoffee.fromRemote(RemoteCoffee remote, {String label = ''}) {
-    return LocalCoffee(
-      coffeeId: int.tryParse(remote.id) ?? 0,
-      title: remote.title,
-      description: remote.description,
-      image: remote.image,
-      ingredients: remote.ingredients,
-      label: label,
-    );
-  }
-
   static List<String> _ingredientsFromJson(dynamic value) {
     if (value == null) return [];
 
