@@ -1,4 +1,4 @@
-import 'package:coffee/features/coffee/model/validation/field_input.dart';
+import 'package:coffee/core/validation/field_input.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';

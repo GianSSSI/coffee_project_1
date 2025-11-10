@@ -1,5 +1,5 @@
 import 'package:coffee/features/coffee/model/coffee/local_coffee/local_coffee_model.dart';
-import 'package:coffee/features/coffee/model/exceptions/sql_exception.dart';
+import 'package:coffee/core/exceptions/sql_exception.dart';
 import 'package:coffee/features/coffee/repositories/local_repository/local_coffee_remote_repository.dart';
 import 'package:coffee/services/database/coffee_dao.dart';
 import 'package:fpdart/src/either.dart';

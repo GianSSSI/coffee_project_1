@@ -46,4 +46,8 @@ class RemoteCoffee {
   }
 
   static dynamic _ingredientsToJson(List<String> ingredients) => ingredients;
+  @override
+  String toString() {
+    return 'RemoteCoffee(id: $id title: $title, ingredients: $ingredients)';
+  }
 }

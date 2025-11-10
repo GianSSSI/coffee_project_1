@@ -21,6 +21,12 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
   final TextEditingController _labelController = TextEditingController();
 
   @override
+  void dispose() {
+    _labelController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final coffee = widget.coffee;
 

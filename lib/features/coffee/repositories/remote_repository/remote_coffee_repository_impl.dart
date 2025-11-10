@@ -1,5 +1,5 @@
 import 'package:coffee/features/coffee/model/coffee/remote_coffee/remote_coffee_model.dart';
-import 'package:coffee/features/coffee/model/exceptions/api_exception.dart';
+import 'package:coffee/core/exceptions/api_exception.dart';
 import 'package:coffee/features/coffee/repositories/remote_repository/remote_coffee_repository.dart';
 import 'package:coffee/services/api/coffee_api_service.dart';
 import 'package:dio/dio.dart';

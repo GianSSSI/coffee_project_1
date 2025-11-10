@@ -15,6 +15,12 @@ class CoffeeLocalDetailsScreen extends StatefulWidget {
 
 class _CoffeeLocalDetailsScreenState extends State<CoffeeLocalDetailsScreen> {
   @override
+  void initState() {
+    print("Coffee ID: ${widget.coffee.coffeeId}");
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final coffee = widget.coffee;
     return Scaffold(

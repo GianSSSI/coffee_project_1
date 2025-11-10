@@ -6,7 +6,7 @@ part 'local_coffee_model.g.dart';
 
 @JsonSerializable()
 class LocalCoffee {
-  final int coffeeId;
+  final String coffeeId;
   final String title;
   final String description;
   final String image;
@@ -57,12 +57,17 @@ class LocalCoffee {
     String label = '',
   }) {
     return LocalCoffee(
-      coffeeId: int.tryParse(remoteCoffee.id) ?? 0,
+      coffeeId: remoteCoffee.id,
       title: remoteCoffee.title,
       description: remoteCoffee.description,
       image: remoteCoffee.image,
       ingredients: remoteCoffee.ingredients,
       label: label,
     );
+  }
+
+  @override
+  String toString() {
+    return 'LocalCoffee(id: $coffeeId title: $title, ingredients: $ingredients)';
   }
 }

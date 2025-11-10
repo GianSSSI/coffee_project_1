@@ -1,6 +1,6 @@
 <queries>
   <query id="insert_coffee">
-    INSERT INTO coffee (
+    INSERT OR REPLACE INTO coffee (
       coffeeId,
       title,
       description,
@@ -20,7 +20,7 @@
 
 <query id ="create_coffee_table">
     CREATE TABLE coffee (
-    coffeeId INTEGER PRIMARY KEY,
+    coffeeId TEXT PRIMARY KEY,
     title TEXT,
     description TEXT,
     image TEXT,

@@ -1,4 +1,4 @@
-import 'package:coffee/features/coffee/model/exceptions/api_exception.dart';
+import 'package:coffee/core/exceptions/api_exception.dart';
 import 'package:coffee/core/configuration/app_config.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class DioClient {
         int? statusCode = e.response?.statusCode;
 
         if (statusCode == 401) {
-          errorMessage = "Unauthorized - maybe token expired";
+          errorMessage = "Unauthorized, token expired";
         } else if (statusCode == 404) {
           errorMessage = "Resource not found";
         } else if (statusCode == 500) {

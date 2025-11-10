@@ -7,7 +7,7 @@ part of 'local_coffee_model.dart';
 // **************************************************************************
 
 LocalCoffee _$LocalCoffeeFromJson(Map<String, dynamic> json) => LocalCoffee(
-  coffeeId: (json['coffeeId'] as num).toInt(),
+  coffeeId: json['coffeeId'] as String,
   title: json['title'] as String,
   description: json['description'] as String,
   image: json['image'] as String,
